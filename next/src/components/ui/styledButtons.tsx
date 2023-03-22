@@ -4,7 +4,7 @@ interface StyledButtonProps {
     type?: "primary" | "secondary"
     children: string | JSX.Element | JSX.Element[]
     className?: string,
-    filled: boolean
+    filled?: boolean
 }
 11
 export function Button({ children, type, className, filled }: StyledButtonProps) {

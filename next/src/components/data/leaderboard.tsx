@@ -1,4 +1,5 @@
 'use client';
+import { Team } from "@/lib/types/team";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
@@ -11,13 +12,13 @@ const calculateRange = (length: number, rowsPerPage: number): number[] => {
     return range;
 }
 
-const sliceData = (data, page: number, rowsPerPage: number) => {
+const sliceData = (data: Team[], page: number, rowsPerPage: number) => {
     return data.slice((page - 1) * rowsPerPage, page * rowsPerPage)
 }
 
-const useTable = (data, page, rowsPerPage) => {
-    const [tableRange, setTableRange] = useState([]);
-    const [slice, setSlice] = useState([]);
+const useTable = (data: Team[], page: number, rowsPerPage: number) => {
+    const [tableRange, setTableRange] = useState<number[]>([]);
+    const [slice, setSlice] = useState<Team[]>([]);
 
     useEffect(() => {
         const range = calculateRange(data.length, rowsPerPage);
@@ -49,7 +50,7 @@ function colorFromPercentile(percentile: number): string {
     }
 }
 
-const TableFooter = ({ range, setPage, page, slice }: { range: number[] }) => {
+const TableFooter = ({ range, setPage, page, slice }: { range: number[], setPage: (page: number) => void, page: number, slice: Team[] }) => {
     useEffect(() => {
         if (slice.length < 1 && page !== 1) {
             setPage(page - 1)
@@ -66,7 +67,7 @@ const TableFooter = ({ range, setPage, page, slice }: { range: number[] }) => {
     </div>
 }
 
-export default function TeamLeaderboard({ data }) {
+export default function TeamLeaderboard({ data }: { data: Team[] }) {
 
 
     const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -97,11 +98,10 @@ export default function TeamLeaderboard({ data }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {slice ? slice.map((team, index) => {
-                        console.log(colorFromPercentile(team.percentile))
+                    {slice ? slice.map((team: Team, index) => {
                         return <tr key={team.key} className="border-b">
                             <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                {team.rank + 1}
+                                {team.rank !== undefined ? team.rank + 1 : null}
                             </th>
                             <td className="px-6 py-4">
                                 <Link href={`/teams/${team.key.substring(3)}`}>{team.key.substring(3)}</Link>
@@ -110,8 +110,8 @@ export default function TeamLeaderboard({ data }) {
                                 <Link href={`/teams/${team.key.substring(3)}`}>{team.name}</Link>
                             </td>
                             <td className={`px-6 py-4 flex justify-end align-middle`}>
-                                <div className={"p-2 w-12 text-center rounded-md " + colorFromPercentile(team.percentile)}>
-                                    {(Math.round(team.current_ordinal * 100) / 100).toFixed(2)}
+                                <div className={"p-2 w-12 text-center rounded-md " + colorFromPercentile(team.percentile ? team.percentile : 50)}>
+                                    {team.current_ordinal ? (Math.round(team.current_ordinal * 100) / 100).toFixed(2) : null}
                                 </div>
 
                             </td>

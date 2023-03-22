@@ -15,7 +15,8 @@ export interface Team {
     key: string,
     rank?: number,
     percentile?: number,
-    history?: TeamEvent[]
+    history?: TeamEvent[],
+    current_ordinal?: number
 }
 
 export type TeamOption = {

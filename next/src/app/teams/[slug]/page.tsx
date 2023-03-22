@@ -17,7 +17,7 @@ export async function generateStaticParams() {
 export default async function Page({ params }: { params: { slug: string } }) {
     const { slug } = params;
     const teamData = await getTeams({ team_codes: ["frc" + slug], fullData: true }).then((arr) => arr[0])
-    if (teamData.rank && teamData.percentile) {
+    if (teamData.rank !== undefined && teamData.percentile !== undefined) {
         return <div className="pt-12 flex justify-center flex-wrap w-full">
             <section className="text-left w-full max-w-[800px] ">
                 <h2>{slug} | {teamData.name}</h2>

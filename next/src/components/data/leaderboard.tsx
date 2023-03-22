@@ -131,10 +131,6 @@ export default function TeamLeaderboard({ data }: { data: Team[] }) {
                     <option value={50}>50</option>
                 </select>
             </div>
-
         </div>
-
-
-
     </div>
 }

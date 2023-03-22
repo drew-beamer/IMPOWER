@@ -6,10 +6,10 @@ import { TeamOption } from "@/lib/types/team";
 
 
 export default async function Page() {
-    const data = await getTeams({ limit: 50 });
+    const data = await getTeams({});
     const teamOptions = data.map((team) => {
         return { value: team.key.substring(3), label: `${team.key.substring(3)} | ${team.name}` }
-    });
+    }).sort((a, b) => parseInt(a.value) - parseInt(b.value));
 
     return <section className="my-12 w-full flex justify-center">
         <div className="max-w-[800px] w-full">

@@ -15,7 +15,7 @@ export default function TeamHistoryChart({ data }: { data: TeamEvent[] }) {
                 </linearGradient>
             </defs>
             <XAxis dataKey={"end_date"} />
-            <YAxis width={20} />
+            <YAxis width={40} />
             <Tooltip />
             <Area type="monotone" dataKey="ordinal" stroke="#60a5fa" fillOpacity={1} activeDot={{ r: 8 }} fill="url(#colorBlue)"  />
         </AreaChart>

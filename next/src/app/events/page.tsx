@@ -12,7 +12,7 @@ export default async function EventsPage() {
     const todayString = today.getFullYear() + "-" + (today.getMonth() + 1 < 10 ? "0" + (today.getMonth() + 1) : today.getMonth() + 1) + "-" + today.getDate();
     const futureString = future.getFullYear() + "-" + (future.getMonth() + 1 < 10 ? "0" + (future.getMonth() + 1) : future.getMonth() + 1) + "-" + future.getDate();
 
-    const eventData = await getEvents({ fields: ["end_date", "week"] });
+    const eventData = await getEvents({ fields: ["end_date", "week", "awards", "projections"] });
 
     const thisWeekEvents = eventData?.filter((event) => {
         if (event.end_date !== undefined) {
@@ -25,17 +25,19 @@ export default async function EventsPage() {
         <div className="max-w-[800px] w-full">
             <section className="w-full text-left">
                 <h2 className="w-full overflow-x-auto">This Week</h2>
-                <div className="whitespace-nowrap overflow-x-scroll space-x-6 my-6 align-top">{thisWeekEvents.map((event) => {
-                    return <div key={event.key} className="w-72 h-72 relative p-8 mx-6 mb-10 bg-stone-100 shadow-xl text-stone-900 rounded-2xl inline-block whitespace-normal align-top">
-                        <div>
-                            <h3 className="font-bold">{event.name}</h3>
-                            <h4 className="font-normal mt-2">Week {event.week !== undefined ? event.week : null}</h4>
+                <div className="whitespace-nowrap overflow-x-scroll space-x-6 my-6 align-top">
+                    {thisWeekEvents.map((event) => {
+                        return <div key={event.key} className="w-72 h-72 relative p-8 mx-6 mb-10 bg-stone-100 shadow-xl text-stone-900 rounded-2xl inline-block whitespace-normal align-top">
+                            <div>
+                                <h3 className="font-bold">{event.name}</h3>
+                                <h4 className="font-normal mt-2">Week {event.week !== undefined ? event.week : null}</h4>
 
+                            </div>
+                            <Link href={`/events/${event.key}`}>
+                                <Button filled className="absolute bottom-8 text-regular px-2 py-2">View Event</Button>
+                            </Link>
                         </div>
-
-                        <Button filled className="absolute bottom-8 text-regular px-2 py-2"><Link href={`/events/${event.key}`}>View Event</Link></Button>
-                    </div>
-                })}</div>
+                    })}</div>
             </section>
             <section className="w-full text-left">
                 <h2 className="w-full">All Events</h2>

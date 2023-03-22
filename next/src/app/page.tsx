@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default async function Home() {
 
-  const date = Date()
+  const date = Date();
 
   return <div className="w-full flex items-center">
     <section className="w-full flex justify-center text-center px-8 items-center mt-10 sm:mt-24 mb-10">

@@ -22,6 +22,10 @@ const pages = [
     {
         name: "Events",
         url: "/events"
+    },
+    {
+        name: "Analysis",
+        url: "/analysis"
     }
 ]
 
@@ -34,7 +38,6 @@ export default function Navbar() {
     useEffect(() => {
 
         const closeOpenMenu = (event: MouseEvent) => {
-            console.log(!ref.current?.contains(event.target as Node))
             if (ref.current && isOpen && !ref.current?.contains(event.target as Node)) {
                 setOpen(false);
             }
@@ -48,7 +51,7 @@ export default function Navbar() {
 
     const list = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } }, exit: { transition: { staggerChildren: 0.1 } } }
 
-    return <nav>
+    return <nav className="z-50 flex fixed">
         <AnimatePresence>
             {isOpen ? <motion.ul transition={{ ease: "easeOut", duration: 0.3 }} initial="hidden" animate="visible" exit="exit" variants={list} className="fixed w-full top-[55px] flex justify-center flex-wrap sm:hidden">
                 {pages.map((page, index) => {

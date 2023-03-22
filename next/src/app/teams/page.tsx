@@ -11,7 +11,7 @@ export default async function Page() {
         return { value: team.key.substring(3), label: `${team.key.substring(3)} | ${team.name}` }
     }).sort((a, b) => parseInt(a.value) - parseInt(b.value));
 
-    return <section className="my-12 w-full flex justify-center">
+    return <section className="my-12 w-full flex justify-center z-0">
         <div className="max-w-[800px] w-full">
             <div className="flex flex-wrap items-center">
                 <div className="grow">

@@ -84,7 +84,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 </table>
                 </div>
                 <ul className="mt-6">
-                    <li className="flex my-1"><div className="h-6 w-6 bg-yellow-300"></div> <p className="ml-2"> indicates team won Impact/Chairman's at event</p></li>
+                    <li className="flex my-1"><div className="h-6 w-6 bg-yellow-300"></div> <p className="ml-2"> indicates team won Impact/Chairman{"'"}s at event</p></li>
                     <li className="flex my-1"><div className="h-6 w-6 bg-gray-300"></div> <p className="ml-2"> indicates team won Engineering Inspiration at event</p></li>
                 </ul>
             </section>

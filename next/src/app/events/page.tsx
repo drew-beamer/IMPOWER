@@ -26,7 +26,7 @@ export default async function EventsPage() {
             <section className="w-full text-left">
                 <h2 className="w-full overflow-x-auto">This Week</h2>
                 <div className="whitespace-nowrap overflow-x-scroll space-x-6 my-6 align-top">{thisWeekEvents.map((event) => {
-                    return <div className="w-72 h-72 relative p-8 mx-6 mb-10 bg-stone-100 shadow-xl text-stone-900 rounded-2xl inline-block whitespace-normal align-top">
+                    return <div key={event.key} className="w-72 h-72 relative p-8 mx-6 mb-10 bg-stone-100 shadow-xl text-stone-900 rounded-2xl inline-block whitespace-normal align-top">
                         <div>
                             <h3 className="font-bold">{event.name}</h3>
                             <h4 className="font-normal mt-2">Week {event.week !== undefined ? event.week : null}</h4>

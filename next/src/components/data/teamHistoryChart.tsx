@@ -6,6 +6,7 @@ import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from "rec
 
 export default function TeamHistoryChart({ data }: { data: TeamEvent[] }) {
 
+
     return <ResponsiveContainer width={"100%"} height={"100%"}>
         <AreaChart width={500} height={300} data={data}>
             <defs>
@@ -17,7 +18,7 @@ export default function TeamHistoryChart({ data }: { data: TeamEvent[] }) {
             <XAxis dataKey={"end_date"} />
             <YAxis width={40} />
             <Tooltip />
-            <Area type="monotone" dataKey="ordinal" stroke="#60a5fa" fillOpacity={1} activeDot={{ r: 8 }} fill="url(#colorBlue)"  />
+            <Area type="monotone" dataKey="ordinal" stroke="#60a5fa" fillOpacity={1} activeDot={{ r: 8 }} fill="url(#colorBlue)" />
         </AreaChart>
     </ResponsiveContainer>
 }

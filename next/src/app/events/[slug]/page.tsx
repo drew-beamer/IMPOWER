@@ -27,7 +27,7 @@ function ProjectionsTable({ data, impactWinners, eiWinners }: { data: Projection
             </tr>
         </thead>
         <tbody>
-            {data.map((team, index) => {
+            {data?.map((team, index) => {
                 return <tr key={team[0].key} className={`border-b ${impactWinners.includes(team[0].key) ? "bg-yellow-300" : eiWinners.includes(team[0].key) ? "bg-gray-300" : ""}`}>
                     <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap">{index + 1}</th>
                     <td className="px-6 py-4"><Link href={`/teams/${team[0].key?.substring(3)}`}>{team[0].key?.substring(3)}</Link></td>
@@ -112,12 +112,12 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 </ul>
             </section>
             <section className="w-full text-left mt-12">
-                <h2>Engineering Inspiration Projections</h2>
+                {eventData.ei_projections !== undefined ?<><h2>Engineering Inspiration Projections</h2>
                 <ProjectionsTable data={eventData.ei_projections as Projection[]} impactWinners={impactWinners} eiWinners={eiWinners} />
                 <ul className="mt-6">
                     <li className="flex my-1"><div className="h-6 w-6 bg-yellow-300"></div> <p className="ml-2"> indicates team won Impact/Chairman{"'"}s at event</p></li>
                     <li className="flex my-1"><div className="h-6 w-6 bg-gray-300"></div> <p className="ml-2"> indicates team won Engineering Inspiration at event</p></li>
-                </ul>
+                </ul></> : null}
             </section>
         </div>
     </div>

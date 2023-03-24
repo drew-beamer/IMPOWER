@@ -39,7 +39,6 @@ export default function Navbar() {
 
         const closeOpenMenu = (event: MouseEvent) => {
             if (!ref.current?.contains(event.target as Node)) {
-                console.log("getting here")
                 setOpen(false);
             }
         }

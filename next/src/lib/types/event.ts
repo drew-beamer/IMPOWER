@@ -1,6 +1,6 @@
 import { Team } from "./team"
 
-export type ValidField = "team_list" | "week" | "end_date" | "awards" | "projections"
+export type ValidField = "team_list" | "week" | "end_date" | "awards" | "projections" | "ei_projections"
 
 export type Projection = [Team, number]
 export type Award = [string, number]
@@ -11,5 +11,6 @@ export interface Event {
     week?: number,
     end_date?: string,
     awards?: Award[],
-    projections?: Projection[]
+    projections?: Projection[],
+    ei_projections?: Projection[],
 }

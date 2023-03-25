@@ -105,7 +105,7 @@ export default function About() {
                     <br /><br />
                 </p>
             </section>
-            <section>
+            <section className="mt-8 max-w-[65ch]">
                 <h3>Privacy Policy</h3>
                 <p>
                     Thank you for visiting IMPOWER.

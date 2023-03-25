@@ -111,7 +111,7 @@ export default function TeamLeaderboard({ data }: { data: Team[] }) {
                             </td>
                             <td className={`px-6 py-4 flex justify-end align-middle`}>
                                 <div className={"p-2 w-12 text-center rounded-md " + colorFromPercentile(team.percentile ? team.percentile : 50)}>
-                                    {team.current_ordinal ? (Math.round(team.current_ordinal * 100) / 100).toFixed(2) : null}
+                                    {team.current_ordinal !== undefined ? (Math.round(team.current_ordinal * 100) / 100).toFixed(2) : null}
                                 </div>
 
                             </td>

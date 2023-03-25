@@ -108,8 +108,6 @@ export default function About() {
             <section>
                 <h3>Privacy Policy</h3>
                 <p>
-                    Privacy Policy
-
                     Thank you for visiting IMPOWER.
 
                     This website does not collect any personal information from its visitors. IMPOWER does not use cookies, tracking pixels, or any other means of gathering information about our users. As a result, I do not share, sell, or disclose any user data to third parties.

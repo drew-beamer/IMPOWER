@@ -14,3 +14,8 @@ export interface Event {
     projections?: Projection[],
     ei_projections?: Projection[],
 }
+
+export type EventOption = {
+    value: 'string',
+    label: 'string'
+}

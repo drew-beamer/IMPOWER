@@ -14,6 +14,19 @@ export async function generateStaticParams() {
     })
 }
 
+export async function generateMetadata({params}: { params: {slug: string} }) {
+    const eventData = await getEvents({eventCodes: [params.slug], fields: []});
+    return {
+        title: `${eventData[0].name} | IMPOWER`,
+        description: `IMPOWER's Impact and Engineering Inspiration projections for ${eventData[0].name}.`,
+        openGraph: {
+            title: `${eventData[0].name} | IMPOWER`,
+            description: `IMPOWER's Impact and Engineering Inspiration projections for ${eventData[0].name}.`,
+            url: `https://impower.drewbeamer.io/events/${eventData[0].key}`,
+            site_name: "IMPOWER"
+        }
+    }
+}
 
 function ProjectionsTable({ data, impactWinners, eiWinners }: { data: Projection[], impactWinners: string[], eiWinners: string[] }) {
     return <div className="relative overflow-x-auto mt-6 z-0">

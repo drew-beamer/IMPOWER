@@ -4,6 +4,19 @@ import { teamDistributionFromOrdinals } from "@/lib/data/helpers";
 import { getEvents } from "@/lib/mongo/events";
 import { getTeams } from "@/lib/mongo/teams";
 
+
+export const metadata = {
+    title: "Analysis | IMPOWER",
+    description: "Explore IMPOWER's accuracy and general insights into the rankings (more coming soon).",
+    openGraph: {
+        title: "Analysis | IMPOWER",
+        description: "Explore IMPOWER's accuracy and general insights into the rankings (more coming soon).",
+        url: "https://impower.drewbeamer.io/analysis",
+        site_name: "IMPOWER"
+    }
+}
+
+
 export default async function AnalysisPage() {
 
     const eventData = await getEvents({ fields: ["week", "awards", "projections", "ei_projections"] });
@@ -62,7 +75,7 @@ export default async function AnalysisPage() {
     return <div className="pt-12 flex justify-center flex-wrap w-full mb-24 px-6">
         <div className="max-w-[800px] w-full">
             <section className="w-full text-left">
-                <h2>{new Date().getFullYear()} Analysis</h2>
+                <h1>{new Date().getFullYear()} Analysis</h1>
                 <div className="mt-6 grid grid-cols-4 gap-x-3 gap-y-1">
                     <div className="my-1 col-span-2 lg:col-span-1 bg-stone-100 text-center rounded-2xl shadow-xl w-full h-48 flex justify-center items-center flex-wrap">
                         <div>
@@ -91,6 +104,7 @@ export default async function AnalysisPage() {
                 </div>
             </section>
             <section className="w-full text-left mt-12">
+                <h2 className="mb-4">Current Team Distribution</h2>
                 <div className="w-full h-[300px]">
                     <OrdinalDistributionChart data={points} />
                 </div>

@@ -5,8 +5,8 @@ export default function BaseLogo() {
         <path d="M83.4719 124.5L0.471924 0L145.722 0L249.472 124.5L145.722 249H0.471924L83.4719 124.5Z" fill="url(#paint0_radial_7_56)" />
         <defs>
             <radialGradient id="paint0_radial_7_56" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0.471924) rotate(49.7795) scale(264.143)">
-                <stop stop-color="#F87171" />
-                <stop offset="1" stop-color="#93C5FD" />
+                <stop stopColor="#F87171" />
+                <stop offset="1" stopColor="#93C5FD" />
             </radialGradient>
         </defs>
     </svg>

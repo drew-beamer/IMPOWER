@@ -2,9 +2,21 @@ import { Button } from "@/components/ui/styledButtons";
 import Link from "next/link";
 
 
+export const metadata = {
+  title: "IMPOWER | A New Take on Impact Power Ratings.",
+  description: "Combining principles from previous metrics with modern ranking systems, IMPOWER is able to predict the winner of events at a rate much higher than random.",
+  openGraph: {
+    title: "IMPOWER | A New Take on Impact Power Ratings.",
+    description: "Combining principles from previous metrics with modern ranking systems, IMPOWER is able to predict the winner of events at a rate much higher than random.",
+    url: "https://impower.drewbeamer.io/",
+    site_name: "IMPOWER"
+  }
+}
+
 export default async function Home() {
 
   const date = Date();
+
 
   return <div className="w-full flex items-center">
     <section className="w-full flex justify-center text-center px-8 items-center mt-10 sm:mt-24 mb-10">

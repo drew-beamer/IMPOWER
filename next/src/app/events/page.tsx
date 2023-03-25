@@ -1,7 +1,21 @@
+import { EventSelect } from "@/components/ui/select";
 import { Button } from "@/components/ui/styledButtons";
 import { getEvents } from "@/lib/mongo/events";
-import { Event } from "@/lib/types/event";
+import { EventOption } from "@/lib/types/event";
 import Link from "next/link";
+
+
+export const metadata = {
+    title: "Events | IMPOWER",
+    description: "Explore and analyze any FRC competition this season from an outreach award perspective.",
+    openGraph: {
+        title: "Events | IMPOWER",
+        description: "Explore and analyze any FRC competition this season from an outreach award perspective.",
+        url: "https://impower.drewbeamer.io/events",
+        site_name: "IMPOWER"
+    }
+}
+
 
 export default async function EventsPage() {
 
@@ -39,8 +53,17 @@ export default async function EventsPage() {
                         </div>
                     })}</div>
             </section>
-            <section className="w-full text-left">
-                <h2 className="w-full">All Events</h2>
+            <section className="w-full relative text-left flex flex-wrap items-center">
+                <h2 className="grow">All Events</h2>
+                <div className="w-72 py-2">
+                    <EventSelect events={eventData.map((event) => {
+                        return {
+                            value: event.key,
+                            label: event.name
+                        } as EventOption
+                    })} />
+                </div>
+
                 <table className="w-full text-sm text-left px-6">
                     <thead className="text-xs uppercase bg-gray-50">
                         <tr>

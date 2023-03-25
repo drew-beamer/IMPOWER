@@ -12,8 +12,8 @@ type Page = {
 
 const pages = [
     {
-        name: "Home",
-        url: "/"
+        name: "About",
+        url: "/about"
     },
     {
         name: "Teams",

@@ -1,7 +1,6 @@
 
 import TeamHistoryChart from "@/components/data/teamHistoryChart";
 import { getTeams } from "@/lib/mongo/teams"
-import { Team } from "@/lib/types/team";
 
 
 
@@ -12,6 +11,21 @@ export async function generateStaticParams() {
             slug: team.key.substring(3)
         }
     })
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+    const teamData = await getTeams({ team_codes: ["frc" + params.slug] }).then((arr) => arr[0])
+    return {
+        title: `Team ${params.slug} | ${teamData.name} | IMPOWER`,
+        description: `Explore and analyze FRC Team ${params.slug}, ${teamData.name}, from an outreach award perspective.`,
+        openGraph: {
+            title: `Team${params.slug} | ${teamData.name} | IMPOWER`,
+            description: `Explore and analyze FRC Team ${params.slug}, ${teamData.name} from an outreach award perspective.`,
+            url: `https://impower.drewbeamer.io/teams/${params.slug}`,
+            site_name: "IMPOWER"
+        }
+    }
+
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {

@@ -1,6 +1,6 @@
 
 import TeamLeaderboard from "@/components/data/leaderboard";
-import {TeamSelect} from "@/components/ui/select";
+import { TeamSelect } from "@/components/ui/select";
 import { getTeams } from "@/lib/mongo/teams"
 import { TeamOption } from "@/lib/types/team";
 
@@ -15,28 +15,46 @@ export const metadata = {
     }
 }
 
+const HOF_INELIGIBLE = ["frc1629", "frc503", "frc4613", "frc1902", "frc1816", "frc1311", "frc2834"]
+
 export default async function Page() {
     const data = await getTeams({});
     const teamOptions = data.map((team) => {
         return { value: team.key.substring(3), label: `${team.key.substring(3)} | ${team.name}` }
-    }).sort((a, b) => parseInt(a.value) - parseInt(b.value));
+    }).filter((team) => !HOF_INELIGIBLE.includes("frc" + team.value)).sort((a, b) => parseInt(a.value) - parseInt(b.value));
 
-    return <section className="my-12 w-full flex justify-center z-0">
-        <div className="max-w-[800px] w-full">
+    const hofIneligibleData = data.filter((team) => HOF_INELIGIBLE.includes(team.key));
+    const eligibleData = data.filter((team) => !HOF_INELIGIBLE.includes(team.key));
+
+    return <div className="my-12 w-full flex justify-center z-0 flex-wrap">
+        <section className="max-w-[800px] w-full mb-6">
+            <h2>Team Lookup</h2>
+            <div className="w-72 py-2">
+                <TeamSelect teams={teamOptions as TeamOption[]} />
+            </div>
+        </section>
+
+        <section className="max-w-[800px] w-full">
             <div className="flex flex-wrap items-center">
                 <div className="grow">
-                    <h2>Leaderboard</h2>
-                </div>
-                <div className="w-72 py-2">
-                    <TeamSelect teams={teamOptions as TeamOption[]} />
+                    <h2>Hall of Fame</h2>
                 </div>
             </div>
             <div className="w-full" >
-                <TeamLeaderboard data={data} />
+                <TeamLeaderboard data={hofIneligibleData} />
             </div>
-        </div>
-
-    </section>
+        </section>
+        <section className="max-w-[800px] w-full mt-12">
+            <div className="flex flex-wrap items-center">
+                <div className="grow">
+                    <h2>Eligible Leaderboard</h2>
+                </div>
+            </div>
+            <div className="w-full" >
+                <TeamLeaderboard data={eligibleData} />
+            </div>
+        </section>
+    </div>
 
 
 }

@@ -14,8 +14,8 @@ export async function generateStaticParams() {
     })
 }
 
-export async function generateMetadata({params}: { params: {slug: string} }) {
-    const eventData = await getEvents({eventCodes: [params.slug], fields: []});
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+    const eventData = await getEvents({ eventCodes: [params.slug], fields: [] });
     return {
         title: `${eventData[0].name} | IMPOWER`,
         description: `IMPOWER's Impact and Engineering Inspiration projections for ${eventData[0].name}.`,
@@ -23,34 +23,43 @@ export async function generateMetadata({params}: { params: {slug: string} }) {
             title: `${eventData[0].name} | IMPOWER`,
             description: `IMPOWER's Impact and Engineering Inspiration projections for ${eventData[0].name}.`,
             url: `https://impower.drewbeamer.io/events/${eventData[0].key}`,
-            site_name: "IMPOWER"
+            site_name: "IMPOWER",
+            locale: 'en_US',
+            type: 'website',
+            images: [
+                {
+                    url: "/images/og.png",
+                    width: 1200,
+                    height: 630,
+                }],
+
         }
     }
 }
 
 function ProjectionsTable({ data, impactWinners, eiWinners }: { data: Projection[], impactWinners: string[], eiWinners: string[] }) {
     return <div className="relative overflow-x-auto mt-6 z-0">
-    <table className="w-full text-sm text-left px-6 mt-6 overflow-x-scroll">
-        <thead className="text-xs uppercase bg-gray-50">
-            <tr>
-                <th scope="col" className="px-6 py-3">Rank</th>
-                <th scope="col" className="px-6 py-3">Number</th>
-                <th scope="col" className="px-6 py-3">Name</th>
-                <th scope="col" className="px-6 py-3">Power</th>
-            </tr>
-        </thead>
-        <tbody>
-            {data?.map((team, index) => {
-                return <tr key={team[0].key} className={`border-b ${impactWinners.includes(team[0].key) ? "bg-yellow-300" : eiWinners.includes(team[0].key) ? "bg-gray-300" : ""}`}>
-                    <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap">{index + 1}</th>
-                    <td className="px-6 py-4"><Link href={`/teams/${team[0].key?.substring(3)}`}>{team[0].key?.substring(3)}</Link></td>
-                    <td className="px-6 py-4"><Link href={`/teams/${team[0].key?.substring(3)}`}>{team[0].name}</Link></td>
-                    <td className="px-6 py-4">{Math.round(100 * team[1]) / 100}</td>
+        <table className="w-full text-sm text-left px-6 mt-6 overflow-x-scroll">
+            <thead className="text-xs uppercase bg-gray-50">
+                <tr>
+                    <th scope="col" className="px-6 py-3">Rank</th>
+                    <th scope="col" className="px-6 py-3">Number</th>
+                    <th scope="col" className="px-6 py-3">Name</th>
+                    <th scope="col" className="px-6 py-3">Power</th>
                 </tr>
-            })}
-        </tbody>
-    </table>
-</div>
+            </thead>
+            <tbody>
+                {data?.map((team, index) => {
+                    return <tr key={team[0].key} className={`border-b ${impactWinners.includes(team[0].key) ? "bg-yellow-300" : eiWinners.includes(team[0].key) ? "bg-gray-300" : ""}`}>
+                        <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap">{index + 1}</th>
+                        <td className="px-6 py-4"><Link href={`/teams/${team[0].key?.substring(3)}`}>{team[0].key?.substring(3)}</Link></td>
+                        <td className="px-6 py-4"><Link href={`/teams/${team[0].key?.substring(3)}`}>{team[0].name}</Link></td>
+                        <td className="px-6 py-4">{Math.round(100 * team[1]) / 100}</td>
+                    </tr>
+                })}
+            </tbody>
+        </table>
+    </div>
 
 }
 
@@ -125,12 +134,12 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 </ul>
             </section>
             <section className="w-full text-left mt-12">
-                {eventData.ei_projections !== undefined ?<><h2>Engineering Inspiration Projections</h2>
-                <ProjectionsTable data={eventData.ei_projections as Projection[]} impactWinners={impactWinners} eiWinners={eiWinners} />
-                <ul className="mt-6">
-                    <li className="flex my-1"><div className="h-6 w-6 bg-yellow-300"></div> <p className="ml-2"> indicates team won Impact/Chairman{"'"}s at event</p></li>
-                    <li className="flex my-1"><div className="h-6 w-6 bg-gray-300"></div> <p className="ml-2"> indicates team won Engineering Inspiration at event</p></li>
-                </ul></> : null}
+                {eventData.ei_projections !== undefined ? <><h2>Engineering Inspiration Projections</h2>
+                    <ProjectionsTable data={eventData.ei_projections as Projection[]} impactWinners={impactWinners} eiWinners={eiWinners} />
+                    <ul className="mt-6">
+                        <li className="flex my-1"><div className="h-6 w-6 bg-yellow-300"></div> <p className="ml-2"> indicates team won Impact/Chairman{"'"}s at event</p></li>
+                        <li className="flex my-1"><div className="h-6 w-6 bg-gray-300"></div> <p className="ml-2"> indicates team won Engineering Inspiration at event</p></li>
+                    </ul></> : null}
             </section>
         </div>
     </div>

@@ -12,7 +12,16 @@ export const metadata = {
         title: "Events | IMPOWER",
         description: "Explore and analyze any FRC competition this season from an outreach award perspective.",
         url: "https://impower.drewbeamer.io/events",
-        site_name: "IMPOWER"
+        site_name: "IMPOWER",
+        locale: "en_US",
+        type: "website",
+        images: [
+            {
+                url: "/images/og.png",
+                width: 1200,
+                height: 630,
+            }],
+
     }
 }
 

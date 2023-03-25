@@ -11,7 +11,15 @@ export const metadata = {
         title: "Teams | IMPOWER",
         description: "Explore and analyze any FRC team this season from an outreach award perspective.",
         url: "https://impower.drewbeamer.io/teams",
-        site_name: "IMPOWER"
+        site_name: "IMPOWER",
+        locale: 'en_US',
+        type: 'website',
+        images: [
+            {
+                url: "/images/og.png",
+                width: 1200,
+                height: 630,
+            }],
     }
 }
 

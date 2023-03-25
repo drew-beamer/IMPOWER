@@ -12,7 +12,15 @@ export const metadata = {
         title: "Analysis | IMPOWER",
         description: "Explore IMPOWER's accuracy and general insights into the rankings (more coming soon).",
         url: "https://impower.drewbeamer.io/analysis",
-        site_name: "IMPOWER"
+        site_name: "IMPOWER",
+        locale: 'en_US',
+        type: 'website',
+        images: [
+            {
+                url: "/images/og.png",
+                width: 1200,
+                height: 630,
+            }],
     }
 }
 

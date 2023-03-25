@@ -22,7 +22,16 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             title: `Team${params.slug} | ${teamData.name} | IMPOWER`,
             description: `Explore and analyze FRC Team ${params.slug}, ${teamData.name} from an outreach award perspective.`,
             url: `https://impower.drewbeamer.io/teams/${params.slug}`,
-            site_name: "IMPOWER"
+            site_name: "IMPOWER",
+            locale: "en_US",
+            type: "website",
+            images: [
+                {
+                    url: "/images/og.png",
+                    width: 1200,
+                    height: 630,
+                }],
+
         }
     }
 

@@ -9,7 +9,13 @@ export const metadata = {
     title: "IMPOWER | A New Take on Impact Power Ratings.",
     description: "Combining principles from previous metrics with modern ranking systems, IMPOWER is able to predict the winner of events at a rate much higher than random.",
     url: "https://impower.drewbeamer.io/",
-    site_name: "IMPOWER"
+    site_name: "IMPOWER",
+    images: [
+      {
+        url: "/images/og.png",
+        width: 1200,
+        height: 630,
+      }],
   }
 }
 

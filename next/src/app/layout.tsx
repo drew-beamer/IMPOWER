@@ -12,7 +12,7 @@ export const metadata = {
   keywords: ["FRC", "FIRST Robotics", "Impact Award", "Chairman's Award", "Engineering Inspiration Award", "First Robotics Competitions", "FRC Awards", "FRC Analytics", "FRC Data", "data analytics"],
   icons: {
     icon: "/images/favicon.png",
-  }
+  },
 }
 
 export default function RootLayout({

@@ -6,7 +6,15 @@ export const metadata = {
         title: "About | IMPOWER",
         description: "Learn more about the history of IMPOWER and the methodology behind it.",
         url: "https://impower.drewbeamer.io/about",
-        site_name: "IMPOWER"
+        site_name: "IMPOWER",
+        locale: 'en_US',
+        type: 'website',
+        images: [
+            {
+                url: "/images/og.png",
+                width: 1200,
+                height: 630,
+            }],
     }
 }
 
@@ -116,7 +124,7 @@ export default function About() {
 
                     This site also includes links to third-party websites on our website. Please note that these websites have their own privacy policies, and I am not responsible for the privacy practices of these websites.
 
-                    By using this website, you consent to the terms of this privacy policy. If you have any questions or concerns about our privacy policy, please contact me at <a href="mailto:andrewmbeamer@gmail.com"  className="text-red-400 hover:underline hover:text-blue-400 transition-colors">andrewmbeamer@gmail.com</a>.
+                    By using this website, you consent to the terms of this privacy policy. If you have any questions or concerns about our privacy policy, please contact me at <a href="mailto:andrewmbeamer@gmail.com" className="text-red-400 hover:underline hover:text-blue-400 transition-colors">andrewmbeamer@gmail.com</a>.
                 </p>
             </section>
         </div>

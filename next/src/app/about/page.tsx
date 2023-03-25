@@ -112,13 +112,13 @@ export default function About() {
 
                     Thank you for visiting IMPOWER.
 
-                    This website does not collect any personal information from its visitors. We do not use cookies, tracking pixels, or any other means of gathering information about our users. As a result, we do not share, sell, or disclose any user data to third parties.
+                    This website does not collect any personal information from its visitors. IMPOWER does not use cookies, tracking pixels, or any other means of gathering information about our users. As a result, I do not share, sell, or disclose any user data to third parties.
 
                     I do use Search Console tools, such as Google Search Console and Bing Webmaster Tools. This information is used to help monitor traffic to the site and analyze page performance.
 
                     This site also includes links to third-party websites on our website. Please note that these websites have their own privacy policies, and I am not responsible for the privacy practices of these websites.
 
-                    By using this website, you consent to the terms of this privacy policy. If you have any questions or concerns about our privacy policy, please contact us at <a href="mailto:andrewmbeamer@gmail.com"  className="text-red-400 hover:underline hover:text-blue-400 transition-colors">andrewmbeamer@gmail.com</a>.
+                    By using this website, you consent to the terms of this privacy policy. If you have any questions or concerns about our privacy policy, please contact me at <a href="mailto:andrewmbeamer@gmail.com"  className="text-red-400 hover:underline hover:text-blue-400 transition-colors">andrewmbeamer@gmail.com</a>.
                 </p>
             </section>
         </div>

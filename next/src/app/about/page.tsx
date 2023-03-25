@@ -39,7 +39,7 @@ export default function About() {
                     largely going back to 5 years, adding in additional bonuses for winning Chairman&#39;s the year prior, giving district teams a bit of a bonus, and the event number the team won at.
                     This last item was my first attempt at creating a strength of schedule weight, as in theory Chairman&#39;s should get easier as the season goes on and the competition level declines.
                     <br/><br/>
-                    If you&#39;re interested in seeing the original "Chairman&#39;s Momentum Ratings", they can be found <a target="_blank" className="text-red-400 hover:underline hover:text-blue-400 transition-colors" href="https://docs.google.com/spreadsheets/d/1C2dq69FtgHTDTexv9j-_QmyzwKg7j2jmLme58uj7CbU/edit?usp=sharing">here</a>
+                    If you&#39;re interested in seeing the original &#34;Chairman&#39;s Momentum Ratings&#34;, they can be found <a target="_blank" className="text-red-400 hover:underline hover:text-blue-400 transition-colors" href="https://docs.google.com/spreadsheets/d/1C2dq69FtgHTDTexv9j-_QmyzwKg7j2jmLme58uj7CbU/edit?usp=sharing">here</a>
                     <br/><br/>
                     However, I did not know how to code. This proved slightly problematic, as I had to manually update the rankings every week. As such, it never really took off. I did, however, continue to
                     use it for proposing regionals to go to and for assessing our odds at the events we were attending. This required some minor adaptations, and resulted in a regional version of the calculator being created.
@@ -64,7 +64,7 @@ export default function About() {
                 <ul className="pl-4 list-disc list-inside">
                     <li>Every team has a rating</li>
                     <li>Every team is also given an uncertainty, that impacts how far they can move with any given win or loss</li>
-                    <li>"Strength of schedule" plays a role (which, in previous metrics was hard to assess, as an Impact award win at an event with, say, 5 of the current top 10 teams would count as much as a win at an event where no team had ever won an outreach award)</li>
+                    <li>&#34;Strength of schedule&#34; plays a role (which, in previous metrics was hard to assess, as an Impact award win at an event with, say, 5 of the current top 10 teams would count as much as a win at an event where no team had ever won an outreach award)</li>
                 </ul>
                 <br/>
                 <p>
@@ -76,7 +76,7 @@ export default function About() {
                     The Weng-Lin system applied to the Chairman&#39;s/Impact award is not perfect (although,
                     when it can predict the winner out of ~40 teams with ~33% accuracy, it&#39;s pretty good).
                     There are a few things I had to assume. First, I assumed that the Chairman&#39;s/Impact award
-                    can be treated as "rank 1," while Engineering Inspiration can be treated as "rank 2." This
+                    can be treated as &#34;rank 1,&#34; while Engineering Inspiration can be treated as &#34;rank 2.&#34; This
                     fact, while generally accepted by the FRC community, might not hold at every event. For regional and district
                     events, teams that are eligible for either Chairman&#39;s/Impact or Engineering Inspiration are put into
                     the same pool. This means that a team that has won Chairman&#39;s/Impact&#39;s rating might decrease if 

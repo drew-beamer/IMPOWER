@@ -17,7 +17,7 @@ export const metadata = {
         type: "website",
         images: [
             {
-                url: "/images/og.png",
+                url: "https://impower.drewbeamer.io/images/og.png",
                 width: 1200,
                 height: 630,
             }],

@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             type: "website",
             images: [
                 {
-                    url: "/images/og.png",
+                    url: "https://impower.drewbeamer.io/images/og.png",
                     width: 1200,
                     height: 630,
                 }],

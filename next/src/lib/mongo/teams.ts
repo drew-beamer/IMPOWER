@@ -114,7 +114,7 @@ export async function countryRegionalStatistics({ country }: { country: string }
                     'state': "$state",
                     'country': "$country",
                     'count': "$count",
-                    'top10avg': { $avg: { "$slice": ["$ordinals", 10] } }
+                    'top10avg': { $avg: { "$slice": ["$ordinals", {$round: { $multiply: ["$count", 0.1]}}] } }
                 }
             }
         ]).toArray()

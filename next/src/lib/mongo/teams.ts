@@ -1,5 +1,6 @@
 import clientPromise from ".";
 import { Team } from "../types/team";
+import { RegionData } from "../types/region";
 
 
 type TeamsRequest = {
@@ -80,5 +81,50 @@ export async function getTeamsList(): Promise<Team[]> {
         console.error(e)
     }
 
+    throw new Error("Server error")
+}
+
+
+export async function countryRegionalStatistics({ country }: { country: string }) : Promise<RegionData[]> {
+    try {
+        const client = await clientPromise;
+        const db = client.db("Teams")
+        const teams_collection = db.collection("2023");
+        const result = await teams_collection.aggregate([
+            {
+                $match: {
+                    country: country
+                }
+            }, {
+                $sort: {
+                    current_ordinal: -1
+                }
+            },
+            {
+                $group: {
+                    _id: "$state",
+                    'state': { $first: "$state" },
+                    'country': { $first: "$country" },
+                    'ordinals': { $push: "$current_ordinal" },
+                    'count': { $sum: 1 }
+                }
+            }, {
+                $project: {
+                    _id: "$state",
+                    'state': "$state",
+                    'country': "$country",
+                    'count': "$count",
+                    'top10avg': { $avg: { "$slice": ["$ordinals", 10] } }
+                }
+            }
+        ]).toArray()
+
+        return result.map((region) => {
+            return { state: region.state, country: region.country, count: region.count, statistic: region.top10avg }
+        })
+
+    } catch (e) {
+        console.error(e);
+    }
     throw new Error("Server error")
 }

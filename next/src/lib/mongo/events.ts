@@ -29,3 +29,4 @@ export async function getEvents({ eventCodes, fields }: { eventCodes?: string[] 
 
     throw new Error("Server error")
 }
+

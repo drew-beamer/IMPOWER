@@ -1,8 +1,10 @@
 
 import OrdinalDistributionChart from "@/components/data/ordinalDistributionChart";
+import RegionalBar from "@/components/data/regionalBar";
 import { teamDistributionFromOrdinals } from "@/lib/data/helpers";
 import { getEvents } from "@/lib/mongo/events";
-import { getTeams } from "@/lib/mongo/teams";
+import { countryRegionalStatistics, getTeams } from "@/lib/mongo/teams";
+import { RegionData } from "@/lib/types/region";
 
 
 export const metadata = {
@@ -29,6 +31,11 @@ export default async function AnalysisPage() {
 
     const eventData = await getEvents({ fields: ["week", "awards", "projections", "ei_projections"] });
     const teamData = await getTeams({ fullData: false });
+    const UnitedStates = await countryRegionalStatistics({ country: "USA" });
+    const Canada = await countryRegionalStatistics({ country: "Canada" });
+
+    let regionalData = UnitedStates.concat(Canada);
+
 
     let total = 0;
     let impactCorrect = 0;
@@ -71,6 +78,15 @@ export default async function AnalysisPage() {
         impactCorrect += impactEventCorrect;
         eiCorrect += eiEventCorrect;
     })
+
+    regionalData = regionalData.filter((region) => {
+        return region.count >= 10;
+    })
+    
+    regionalData = regionalData.sort((a, b) => {
+        return b.statistic - a.statistic;
+    }) as RegionData[]
+
 
     const teamOrdinals = teamData.map((team) => {
         return team.current_ordinal as number;
@@ -117,6 +133,20 @@ export default async function AnalysisPage() {
                     <OrdinalDistributionChart data={points} />
                 </div>
             </section>
+            <section className="w-full text-left mt-12">
+                <h2 className="mb-4">Regional Top 10 Average</h2>
+                <p>This graph shows the average of the top 10 teams from each state or province in
+                    the United States and Canada with 10+ teams.
+                </p>
+                <div className="w-full h-[300px]">
+                    {regionalData !== null ? <RegionalBar data={regionalData} />: null}
+                </div>
+            </section>
+
         </div>
     </div>
 }
+
+/*
+            
+*/

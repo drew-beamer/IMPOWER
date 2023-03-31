@@ -2,7 +2,7 @@
 import OrdinalDistributionChart from "@/components/data/ordinalDistributionChart";
 import { teamDistributionFromOrdinals } from "@/lib/data/helpers";
 import { getEvents } from "@/lib/mongo/events";
-import { getTeams } from "@/lib/mongo/teams";
+import { countryRegionalStatistics, getTeams } from "@/lib/mongo/teams";
 
 
 export const metadata = {
@@ -29,6 +29,8 @@ export default async function AnalysisPage() {
 
     const eventData = await getEvents({ fields: ["week", "awards", "projections", "ei_projections"] });
     const teamData = await getTeams({ fullData: false });
+    const stats = await countryRegionalStatistics({country: "USA"});
+    console.log(stats)
 
     let total = 0;
     let impactCorrect = 0;

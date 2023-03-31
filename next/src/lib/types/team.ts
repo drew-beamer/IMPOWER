@@ -13,6 +13,8 @@ export interface TeamEvent {
 export interface Team {
     name: string,
     key: string,
+    country?: string,
+    state?: string,
     rank?: number,
     percentile?: number,
     history?: TeamEvent[],

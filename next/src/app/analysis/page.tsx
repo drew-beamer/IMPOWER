@@ -80,7 +80,7 @@ export default async function AnalysisPage() {
     })
 
     regionalData = regionalData.filter((region) => {
-        return region.count >= 10;
+        return region.count >= 30;
     })
     
     regionalData = regionalData.sort((a, b) => {
@@ -135,8 +135,8 @@ export default async function AnalysisPage() {
             </section>
             <section className="w-full text-left mt-12">
                 <h2 className="mb-4">Regional Top 10 Average</h2>
-                <p>This graph shows the average of the top 10 teams from each state or province in
-                    the United States and Canada with 10+ teams.
+                <p>This graph shows the average of the top 10% of teams from each state or province in
+                    the United States and Canada with 30+ teams.
                 </p>
                 <div className="w-full h-[300px]">
                     {regionalData !== null ? <RegionalBar data={regionalData} />: null}

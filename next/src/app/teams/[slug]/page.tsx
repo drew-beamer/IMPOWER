@@ -66,7 +66,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 <div className="px-16 mt-8">
                     <ol className="border-l-4 border-stone-600 relative">
                         {teamData.history !== undefined ? teamData?.history?.map((event, index) => {
-                            return <li className="mb-10 ml-6 px-4">
+                            return <li key={event.event} className="mb-10 ml-6 px-4">
                                 <div className="w-4 h-4 -left-2.5 mt-1.5 rounded-full absolute bg-stone-600"></div>
                                 <h5>{event.end_date}</h5>
                                 <h4>{event.award}</h4>

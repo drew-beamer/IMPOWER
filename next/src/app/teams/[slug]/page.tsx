@@ -64,10 +64,10 @@ export default async function Page({ params }: { params: { slug: string } }) {
             <section className="text-left w-full max-w-[800px] mt-12">
                 <h2>Award History Timeline</h2>
                 <div className="px-16 mt-8">
-                    <ol className="border-l-4 border-stone-600 relative">
+                    <ol className="border-l-4 border-stone-300 relative">
                         {teamData.history !== undefined ? teamData?.history?.map((event, index) => {
                             return <li key={event.event} className="mb-10 ml-6 px-4">
-                                <div className="w-4 h-4 -left-2.5 mt-1.5 rounded-full absolute bg-stone-600"></div>
+                                <div className="w-4 h-4 -left-2.5 mt-1.5 rounded-full absolute bg-stone-300"></div>
                                 <h5>{event.end_date}</h5>
                                 <h4>{event.award}</h4>
                                 <p>Ordinal Change: {index === 0 ? event.ordinal : teamData.history === undefined ? null : Math.round((event.ordinal - teamData.history[index - 1].ordinal) * 100) / 100}</p>

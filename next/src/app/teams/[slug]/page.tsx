@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         title: `Team ${params.slug} | ${teamData.name} | IMPOWER`,
         description: `Explore and analyze FRC Team ${params.slug}, ${teamData.name}, from an outreach award perspective.`,
         openGraph: {
-            title: `Team${params.slug} | ${teamData.name} | IMPOWER`,
+            title: `Team ${params.slug} | ${teamData.name} | IMPOWER`,
             description: `Explore and analyze FRC Team ${params.slug}, ${teamData.name} from an outreach award perspective.`,
             url: `https://impower.drewbeamer.io/teams/${params.slug}`,
             site_name: "IMPOWER",

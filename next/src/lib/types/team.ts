@@ -6,7 +6,8 @@ export interface TeamEvent {
     rating: {
         mu: number,
         sigma: number
-    }
+    },
+    award: string,
 
 }
 

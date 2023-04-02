@@ -113,7 +113,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                     <ol className="border-l-4 border-stone-300 relative">
                         {teamData.history !== undefined ? teamData?.history?.map((event, index) => {
                             let circleColor = "bg-stone-300"
-                            if (event.award.includes("Chairman's Award") || event.award.includes("Impact Award")) {
+                            if (event.award?.includes("Chairman's Award") || event.award?.includes("Impact Award")) {
                                 circleColor = "bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-500"
                             } else if (event.award.includes("Engineering Inspiration Award")) {
                                 circleColor = "bg-gradient-to-br from-gray-100 to-gray-300"

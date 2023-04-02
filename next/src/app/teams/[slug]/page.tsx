@@ -40,7 +40,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 export default async function Page({ params }: { params: { slug: string } }) {
     const { slug } = params;
     const teamData = await getTeams({ team_codes: ["frc" + slug], fullData: true }).then((arr) => arr[0])
-    console.log(teamData)
     if (teamData.rank !== undefined && teamData.percentile !== undefined) {
         return <div className="pt-12 flex justify-center flex-wrap w-full">
             <section className="text-left w-full max-w-[800px] ">
@@ -61,6 +60,23 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 <div className="w-full h-[300px] mt-12">
                     {teamData.history !== undefined ? <TeamHistoryChart data={teamData.history} /> : null}
                 </div>
+            </section>
+            <section className="text-left w-full max-w-[800px] mt-12">
+                <h2>Award History Timeline</h2>
+                <div className="px-16 mt-8">
+                    <ol className="border-l-4 border-stone-600 relative">
+                        {teamData.history !== undefined ? teamData?.history?.map((event, index) => {
+                            return <li className="mb-10 ml-6 px-4">
+                                <div className="w-4 h-4 -left-2.5 mt-1.5 rounded-full absolute bg-stone-600"></div>
+                                <h5>{event.end_date}</h5>
+                                <h4>{event.award}</h4>
+                                <p>Ordinal Change: {index === 0 ? event.ordinal : Math.round((event.ordinal - teamData.history[index - 1].ordinal) * 100) / 100}</p>
+                            </li>
+                        }) : null}
+                    </ol>
+                </div>
+
+
             </section>
         </div>
     } else {

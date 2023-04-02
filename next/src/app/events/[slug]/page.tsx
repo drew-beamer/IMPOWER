@@ -50,7 +50,7 @@ function ProjectionsTable({ data, impactWinners, eiWinners }: { data: Projection
             </thead>
             <tbody>
                 {data?.map((team, index) => {
-                    return <tr key={team[0].key} className={`border-b ${impactWinners.includes(team[0].key) ? "bg-yellow-300" : eiWinners.includes(team[0].key) ? "bg-gray-300" : ""}`}>
+                    return <tr key={team[0].key} className={`border-b rounded-lg ${impactWinners.includes(team[0].key) ? "bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-500" : eiWinners.includes(team[0].key) ? "bg-gradient-to-br from-gray-100 to-gray-300" : ""}`}>
                         <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap">{index + 1}</th>
                         <td className="px-6 py-4"><Link href={`/teams/${team[0].key?.substring(3)}`}>{team[0].key?.substring(3)}</Link></td>
                         <td className="px-6 py-4"><Link href={`/teams/${team[0].key?.substring(3)}`}>{team[0].name}</Link></td>
@@ -107,13 +107,13 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 <div className="mt-6 flex space-x-2 w-full justify-center items-center my-8 flex-wrap">
                     {chairmansCorrect ? <div className="bg-stone-100 text-center rounded-2xl shadow-xl w-48 h-48 flex justify-center items-center flex-wrap mb-4">
                         <div>
-                            <TrophyIcon size={36} className="w-full fill-yellow-400 mb-2" />
+                            <TrophyIcon size={36} className="w-full  fill-yellow-400 mb-2" />
                             Impact in Top 5
                         </div>
                     </div> : null}
                     {eiCorrect ? <div className="bg-stone-100 text-center rounded-2xl shadow-xl w-48 h-48 flex justify-center items-center flex-wrap mb-4">
                         <div>
-                            <TrophyIcon size={36} className="w-full fill-gray-400 mb-2" />
+                            <TrophyIcon size={36} className="w-full fill-gray-300 mb-2" />
                             EI in Top 5
                         </div>
                     </div> : null}
@@ -129,16 +129,16 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 <h2>Impact Projections</h2>
                 <ProjectionsTable data={eventData.projections as Projection[]} impactWinners={impactWinners} eiWinners={eiWinners} />
                 <ul className="mt-6">
-                    <li className="flex my-1"><div className="h-6 w-6 bg-yellow-300"></div> <p className="ml-2"> indicates team won Impact/Chairman{"'"}s at event</p></li>
-                    <li className="flex my-1"><div className="h-6 w-6 bg-gray-300"></div> <p className="ml-2"> indicates team won Engineering Inspiration at event</p></li>
+                    <li className="flex my-1"><div className="h-6 w-6 bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-500"></div> <p className="ml-2"> indicates team won Impact/Chairman{"'"}s at event</p></li>
+                    <li className="flex my-1"><div className="h-6 w-6 bg-gradient-to-br from-gray-100 to-gray-300"></div> <p className="ml-2"> indicates team won Engineering Inspiration at event</p></li>
                 </ul>
             </section>
             <section className="w-full text-left mt-12">
                 {eventData.ei_projections !== undefined ? <><h2>Engineering Inspiration Projections</h2>
                     <ProjectionsTable data={eventData.ei_projections as Projection[]} impactWinners={impactWinners} eiWinners={eiWinners} />
                     <ul className="mt-6">
-                        <li className="flex my-1"><div className="h-6 w-6 bg-yellow-300"></div> <p className="ml-2"> indicates team won Impact/Chairman{"'"}s at event</p></li>
-                        <li className="flex my-1"><div className="h-6 w-6 bg-gray-300"></div> <p className="ml-2"> indicates team won Engineering Inspiration at event</p></li>
+                        <li className="flex my-1"><div className="h-6 w-6 bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-500"></div> <p className="ml-2"> indicates team won Impact/Chairman{"'"}s at event</p></li>
+                        <li className="flex my-1"><div className="h-6 w-6 bg-gradient-to-br from-gray-100 to-gray-300"></div> <p className="ml-2"> indicates team won Engineering Inspiration at event</p></li>
                     </ul></> : null}
             </section>
         </div>

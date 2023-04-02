@@ -30,10 +30,12 @@ export default async function EventsPage() {
 
     var today = new Date();
     var future = new Date()
-    future.setDate(future.getDate() + 7)
+    future.setDate(future.getDate() + 7);
 
-    const todayString = today.getFullYear() + "-" + (today.getMonth() + 1 < 10 ? "0" + (today.getMonth() + 1) : today.getMonth() + 1) + "-" + today.getDate();
-    const futureString = future.getFullYear() + "-" + (future.getMonth() + 1 < 10 ? "0" + (future.getMonth() + 1) : future.getMonth() + 1) + "-" + future.getDate();
+
+    const todayString = today.getFullYear() + "-" + (today.getMonth() + 1 < 10 ? "0" + (today.getMonth() + 1) : today.getMonth() + 1) + "-" + (today.getDate() + 1 < 10 ? "0" + (today.getDate()) : today.getDate());
+    const futureString = future.getFullYear() + "-" + (future.getMonth() + 1 < 10 ? "0" + (future.getMonth() + 1) : future.getMonth() + 1) + "-" + (future.getDate() + 1 < 10 ? "0" + (future.getDate()) : future.getDate());
+
 
     const eventData = await getEvents({ fields: ["end_date", "week", "awards", "projections"] });
 

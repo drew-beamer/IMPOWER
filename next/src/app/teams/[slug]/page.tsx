@@ -70,7 +70,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                                 <div className="w-4 h-4 -left-2.5 mt-1.5 rounded-full absolute bg-stone-600"></div>
                                 <h5>{event.end_date}</h5>
                                 <h4>{event.award}</h4>
-                                <p>Ordinal Change: {index === 0 ? event.ordinal : Math.round((event.ordinal - teamData.history[index - 1].ordinal) * 100) / 100}</p>
+                                <p>Ordinal Change: {index === 0 ? event.ordinal : teamData.history === undefined ? null : Math.round((event.ordinal - teamData.history[index - 1].ordinal) * 100) / 100}</p>
                             </li>
                         }) : null}
                     </ol>

@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         title: `Team ${params.slug} | ${teamData.name} | IMPOWER`,
         description: `Explore and analyze FRC Team ${params.slug}, ${teamData.name}, from an outreach award perspective.`,
         openGraph: {
-            title: `Team${params.slug} | ${teamData.name} | IMPOWER`,
+            title: `Team ${params.slug} | ${teamData.name} | IMPOWER`,
             description: `Explore and analyze FRC Team ${params.slug}, ${teamData.name} from an outreach award perspective.`,
             url: `https://impower.drewbeamer.io/teams/${params.slug}`,
             site_name: "IMPOWER",
@@ -60,6 +60,23 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 <div className="w-full h-[300px] mt-12">
                     {teamData.history !== undefined ? <TeamHistoryChart data={teamData.history} /> : null}
                 </div>
+            </section>
+            <section className="text-left w-full max-w-[800px] mt-12">
+                <h2>Award History Timeline</h2>
+                <div className="px-16 mt-8">
+                    <ol className="border-l-4 border-stone-600 relative">
+                        {teamData.history !== undefined ? teamData?.history?.map((event, index) => {
+                            return <li key={event.event} className="mb-10 ml-6 px-4">
+                                <div className="w-4 h-4 -left-2.5 mt-1.5 rounded-full absolute bg-stone-600"></div>
+                                <h5>{event.end_date}</h5>
+                                <h4>{event.award}</h4>
+                                <p>Ordinal Change: {index === 0 ? event.ordinal : teamData.history === undefined ? null : Math.round((event.ordinal - teamData.history[index - 1].ordinal) * 100) / 100}</p>
+                            </li>
+                        }) : null}
+                    </ol>
+                </div>
+
+
             </section>
         </div>
     } else {

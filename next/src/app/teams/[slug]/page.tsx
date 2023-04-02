@@ -45,7 +45,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
     let chairmans = 0;
     let ei = 0
     teamData.history?.forEach((event) => {
-        if (event.award.includes("Chairman's Award") || event.award.includes("Impact Award")) chairmans++;
+        if (event.award?.includes("Chairman's Award") || event.award?.includes("Impact Award")) chairmans++;
         else if (event.award.includes("Engineering Inspiration Award")) ei++;
     })
 

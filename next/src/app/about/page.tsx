@@ -19,7 +19,7 @@ export const metadata = {
 }
 
 export default function About() {
-    return <div className="pt-12 flex justify-center flex-wrap w-full mb-24">
+    return <div className="pt-12 flex justify-center flex-wrap w-full mb-24 px-4">
         <div className="max-w-[800px] w-full">
             <section className="w-full text-left max-w-[65ch]">
                 <h1 className="font-bold">About Impower</h1>
@@ -82,7 +82,7 @@ export default function About() {
                 <h3>Some Constraints and Problems</h3>
                 <p>
                     The Weng-Lin system applied to the Chairman&#39;s/Impact award is not perfect (although,
-                    when it can predict the winner out of ~40 teams with ~33% accuracy, it&#39;s pretty good).
+                    when it can predict the winner out of ~40 teams with ~27% accuracy, it&#39;s pretty good).
                     There are a few things I had to assume. First, I assumed that the Chairman&#39;s/Impact award
                     can be treated as &#34;rank 1,&#34; while Engineering Inspiration can be treated as &#34;rank 2.&#34; This
                     fact, while generally accepted by the FRC community, might not hold at every event. For regional and district
@@ -102,7 +102,7 @@ export default function About() {
                     Another problem with the rating system is that it is *very difficult* for the variances
                     to converge, without significantly more data (although, ratings have gotten significantly more accurate
                     since the data starts in 2017). This is largely due to the size of the competitions, and lack of differentiation
-                    among teams (3 ranks for 40 teams when 38 of them share the same rank is not a lot of data). Again, this problem
+                    among teams (just a couple ranks for 40 teams when 35+ of them share the same rank is not a lot of data). Again, this problem
                     improves at District Championships when there are generally fewer teams eligible for awards.
                     <br /><br />
                 </p>

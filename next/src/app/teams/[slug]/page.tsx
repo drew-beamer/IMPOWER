@@ -45,8 +45,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
     let chairmans = 0;
     let ei = 0
     teamData.history?.forEach((event) => {
-        if (event.award?.includes("Chairman's Award") || event.award?.includes("Impact Award")) chairmans++;
-        else if (event.award.includes("Engineering Inspiration Award")) ei++;
+        if (event.award !== undefined && (event.award?.includes("Chairman's Award") || event.award?.includes("Impact Award"))) chairmans++;
+        else if (event.award !== undefined && event.award?.includes("Engineering Inspiration Award")) ei++;
     })
 
 
@@ -113,16 +113,16 @@ export default async function Page({ params }: { params: { slug: string } }) {
                     <ol className="border-l-4 border-stone-300 relative">
                         {teamData.history !== undefined ? teamData?.history?.map((event, index) => {
                             let circleColor = "bg-stone-300"
-                            if (event.award?.includes("Chairman's Award") || event.award?.includes("Impact Award")) {
+                            if (event.award !== undefined && (event.award.includes("Chairman's Award") || event.award.includes("Impact Award"))) {
                                 circleColor = "bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-500"
-                            } else if (event.award.includes("Engineering Inspiration Award")) {
+                            } else if (event.award !== undefined &&  event.award.includes("Engineering Inspiration Award")) {
                                 circleColor = "bg-gradient-to-br from-gray-100 to-gray-300"
                             }
 
                             return <li key={event.event} className="mb-10 ml-6 px-4">
                                 <div className={`w-4 h-4 -left-2.5 mt-1.5 rounded-full absolute ${circleColor}`}></div>
                                 <h5>{event.end_date}</h5>
-                                <h4>{event.award}</h4>
+                                <h4>{event.award === undefined ? "DNP" : event.award}</h4>
                                 <p>Ordinal Change: {index === 0 ? event.ordinal : teamData.history === undefined ? null : Math.round((event.ordinal - teamData.history[index - 1].ordinal) * 100) / 100}</p>
                             </li>
                         }) : null}

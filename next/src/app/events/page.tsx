@@ -85,7 +85,7 @@ export default async function EventsPage() {
                     <tbody>
                         {eventData.map((event) => {
                             return <tr key={event.key} className="border-b">
-                                <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap">{event.week !== undefined ? event.week : "Other"}</th>
+                                <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap">{event.week? event.week : "CMP"}</th>
                                 <td className="px-6 py-4"><Link href={`/events/${event.key}`}>{event.name}</Link></td>
                             </tr>
                         })}

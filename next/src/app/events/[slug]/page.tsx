@@ -125,8 +125,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
             </section>
 
-            <section className="w-full text-left mt-12">
-                <h2>Impact Projections</h2>
+            <section className="w-full text-left mt-12 pt-10">
+                <h2>{eventData.name.includes("Division") ? "Engineering Inspiration" : "Impact"} Projections</h2>
                 <ProjectionsTable data={eventData.projections as Projection[]} impactWinners={impactWinners} eiWinners={eiWinners} />
                 <ul className="mt-6">
                     <li className="flex my-1"><div className="h-6 w-6 bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-500"></div> <p className="ml-2"> indicates team won Impact/Chairman{"'"}s at event</p></li>

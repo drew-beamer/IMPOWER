@@ -1,0 +1,1 @@
+ALTER TABLE "award" ADD COLUMN "award_weight" integer DEFAULT 0 NOT NULL;
